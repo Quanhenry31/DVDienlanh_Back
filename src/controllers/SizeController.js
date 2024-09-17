@@ -1,0 +1,67 @@
+const Service = require("../services/sizeService");
+const { Op } = require("sequelize");
+
+class Controller {
+  // [POST] /users
+  create = async (req, res) => {
+    const data = await Service.create({
+      ...req.body,
+    });
+    res.json(data);
+  };
+
+  // [PUT] /users
+  update = async (req, res) => {
+    const id = req.params.id;
+    const data = await Service.update(
+      {
+        ...req.body,
+      },
+      id
+    );
+    res.json(data);
+  };
+
+  // [DELETE] /users
+  delete = async (req, res) => {
+    const id = req.params.id;
+    const data = await Service.destroy(id);
+    res.json(data);
+  };
+  // [GET] /users/ALL
+  findAll = async (req, res) => {
+    const data = await Service.search();
+    return res.json({
+      data,
+    });
+  };
+
+  // [GET] /users/id
+  findId = async (req, res) => {
+    const id = req.params.id;
+    const data = await Service.searchId(id);
+    return res.json({
+      data,
+    });
+  };
+
+  // [GET] /loc/ALL
+  findLoc = async (req, res) => {
+    try {
+      const data = await Service.searchLoc({
+        page: +req.query.page,
+        pageSize: +req.query.pageSize,
+        size: req.query.size,
+      });
+      console.log(req.query.size); // Chỉnh sửa lại để log đúng biến
+      return res.json(data);
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .json({ error: "An error occurred while fetching products." });
+    }
+  };
+}
+
+module.exports = new Controller();
