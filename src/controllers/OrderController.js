@@ -44,6 +44,12 @@ class Controller {
       data,
     });
   };
+  findAllOrder = async (req, res) => {
+    const data = await Service.searchOrder();
+    return res.json({
+      data,
+    });
+  };
 }
 
 module.exports = new Controller();

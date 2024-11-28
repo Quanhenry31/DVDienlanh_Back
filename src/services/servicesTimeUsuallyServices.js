@@ -1,9 +1,9 @@
-const { ImgDetails } = require("../models");
-
+const { ServicesTimeUsuallys } = require("../models");
+const { Op } = require("sequelize");
 // [POST] /
 const create = async (payload) => {
   try {
-    const data = await ImgDetails.create({ ...payload });
+    const data = await ServicesTimeUsuallys.create({ ...payload });
     console.log(payload);
     return data;
   } catch (err) {
@@ -14,7 +14,10 @@ const create = async (payload) => {
 // [PUT] /:id
 const update = async (payload, id) => {
   try {
-    const data = await ImgDetails.update({ ...payload }, { where: { id } });
+    const data = await ServicesTimeUsuallys.update(
+      { ...payload },
+      { where: { id } }
+    );
     return data;
   } catch (err) {
     console.log(err);
@@ -24,17 +27,7 @@ const update = async (payload, id) => {
 // [DELETE] /delete
 const destroy = async (id) => {
   try {
-    const data = await ImgDetails.destroy({ where: { id } });
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-// [DELETE] /delete
-const destroyDetailID = async (imgDetailID) => {
-  try {
-    const data = await ImgDetails.destroy({ where: { imgDetailID } });
+    const data = await ServicesTimeUsuallys.destroy({ where: { id } });
     return data;
   } catch (err) {
     console.log(err);
@@ -44,7 +37,7 @@ const destroyDetailID = async (imgDetailID) => {
 // [GET] /
 const search = async () => {
   try {
-    const data = await ImgDetails.findAll();
+    const data = await ServicesTimeUsuallys.findAll();
     return data;
   } catch (err) {
     console.log(err);
@@ -54,7 +47,7 @@ const search = async () => {
 // [GET] /:id
 const searchId = async (id) => {
   try {
-    const data = await ImgDetails.findByPk(id);
+    const data = await ServicesTimeUsuallys.findByPk(id);
     return data;
   } catch (err) {
     console.log(err);
@@ -67,5 +60,4 @@ module.exports = {
   destroy,
   search,
   searchId,
-  destroyDetailID,
 };

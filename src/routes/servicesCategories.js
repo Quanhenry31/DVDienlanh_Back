@@ -1,11 +1,10 @@
 const router = require("express").Router();
-const Controller = require("../controllers/UserChatsController");
+const Controller = require("../controllers/ServicesCategoriesController");
 
 router.post("/", Controller.create);
 router.put("/:id", Controller.update);
 router.delete("/:id", Controller.delete);
-router.get("/listUserChats", Controller.findUserChat);
 router.get("/", Controller.findAll);
 router.get("/:id", Controller.findId);
-router.get("/:userChatID/:adminChatID", Controller.findLoc);
+
 module.exports = router;

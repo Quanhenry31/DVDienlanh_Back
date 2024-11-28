@@ -1,4 +1,4 @@
-const Service = require("../services/image");
+const Service = require("../services/servicesTimeUsuallyServices");
 const { Op } = require("sequelize");
 
 class Controller {
@@ -26,13 +26,6 @@ class Controller {
   delete = async (req, res) => {
     const id = req.params.id;
     const data = await Service.destroy(id);
-    res.json(data);
-  };
-
-  // [DELETE] /users
-  deleteDetailID = async (req, res) => {
-    const imgDetailID = req.params.imgDetailID;
-    const data = await Service.destroyDetailID(imgDetailID);
     res.json(data);
   };
   // [GET] /users/ALL

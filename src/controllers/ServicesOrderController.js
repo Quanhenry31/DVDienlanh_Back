@@ -1,4 +1,4 @@
-const Service = require("../services/image");
+const Service = require("../services/servicesOrderServices");
 const { Op } = require("sequelize");
 
 class Controller {
@@ -28,13 +28,6 @@ class Controller {
     const data = await Service.destroy(id);
     res.json(data);
   };
-
-  // [DELETE] /users
-  deleteDetailID = async (req, res) => {
-    const imgDetailID = req.params.imgDetailID;
-    const data = await Service.destroyDetailID(imgDetailID);
-    res.json(data);
-  };
   // [GET] /users/ALL
   findAll = async (req, res) => {
     const data = await Service.search();
@@ -50,6 +43,24 @@ class Controller {
     return res.json({
       data,
     });
+  };
+
+  // [GET] /loc/ALL
+  findLoc = async (req, res) => {
+    try {
+      const data = await Service.searchLoc({
+        page: +req.query.page,
+        pageSize: +req.query.pageSize,
+        name: req.query.name,
+      });
+      console.log(req.query.name); // Chỉnh sửa lại để log đúng biến
+      return res.json(data);
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .json({ error: "An error occurred while fetching products." });
+    }
   };
 }
 

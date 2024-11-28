@@ -24,6 +24,15 @@ const categoriBlogRouter = require("./categoriBlog");
 const blogsRouter = require("./blog");
 const commentBlogRouter = require("./commentBlog");
 
+const servicesOrderRouter = require("./servicesOrder");
+const servicesCategoriesRouter = require("./servicesCategories");
+const servicesOrderPayRouter = require("./servicesOrderPay");
+
+const servicesUsuallyRouter = require("./servicesUsually");
+const serviceCategoriesUsuallyRouter = require("./serviceCategoriesUsually");
+const servicesTimeUsuallyRouter = require("./servicesTimeUsually");
+const servicesOrderPaysUsuallyRouter = require("./servicesOrderPaysUsually");
+
 router.use("/users", userRouter);
 router.use("/products", productRouter);
 router.use("/advs", advRouter);
@@ -47,6 +56,16 @@ router.use("/userChats", userChatRouter);
 router.use("/categoriBlogs", categoriBlogRouter);
 router.use("/blogs", blogsRouter);
 router.use("/commentBlogs", commentBlogRouter);
+
+router.use("/servicesOrder", servicesOrderRouter);
+router.use("/servicesCategories", servicesCategoriesRouter);
+router.use("/servicesOrderPays", servicesOrderPayRouter);
+
+router.use("/servicesUsually", servicesUsuallyRouter);
+router.use("/serviceCategoriesUsually", serviceCategoriesUsuallyRouter);
+router.use("/servicesTimeUsually", servicesTimeUsuallyRouter);
+router.use("/servicesOrderPaysUsually", servicesOrderPaysUsuallyRouter);
+
 router.use("/exports", exportRouter);
 
 module.exports = router;

@@ -52,6 +52,18 @@ class Controller {
       data,
     });
   };
+  // [get] /:all find new time and one userChatID
+  findUserChat = async (req, res) => {
+    try {
+      const data = await Service.listUserChats();
+      return res.json({
+        data,
+      });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ message: "Error fetching user chats" });
+    }
+  };
 }
 
 module.exports = new Controller();

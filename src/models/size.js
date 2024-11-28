@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Product, { foreignKey: "sizeID" });
     }
   }
   Size.init(
@@ -21,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       price: DataTypes.INTEGER,
       date: DataTypes.DATE,
       sizeID: DataTypes.INTEGER,
+      status: DataTypes.STRING,
     },
     {
       sequelize,

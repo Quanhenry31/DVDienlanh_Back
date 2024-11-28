@@ -45,6 +45,7 @@ const searchId = async (id) => {
           include: [
             {
               model: User,
+              attributes: { exclude: ["password"] },
             },
           ],
         },

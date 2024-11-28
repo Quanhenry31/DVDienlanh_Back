@@ -61,7 +61,7 @@ const searchId = async (id) => {
         },
         {
           model: User,
-          attributes: ["id", "userName", "createdAt"],
+          attributes: { exclude: ["password"] },
         },
       ],
     });

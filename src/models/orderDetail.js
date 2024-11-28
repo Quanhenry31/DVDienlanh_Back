@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.Product, { foreignKey: "productID" });
       this.belongsTo(models.Order, { foreignKey: "orderID" });
+
     }
   }
   OrderDetail.init(
