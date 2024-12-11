@@ -10,14 +10,12 @@ const loginSuccessService = (email, tokenLogin) =>
         where: { email, tokenLogin },
         raw: true,
       });
-
       console.log(response);
-
       const token =
         response &&
         jwt.sign(
           { id: response.id, email: response.email, role: response.role },
-          "hip06",
+          "quan03",
           { expiresIn: "5d" }
         );
       resolve({

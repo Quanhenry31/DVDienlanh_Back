@@ -7,5 +7,6 @@ router.delete("/:id", Controller.delete);
 router.get("/all", Controller.findAll);
 router.get("/", Controller.findLoc);
 router.get("/:id", Controller.findId);
+router.get("/productLQ/:id", Controller.findProductLQ);
 
 module.exports = router;

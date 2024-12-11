@@ -81,7 +81,6 @@ passport.use(
     },
     async function (accessToken, refreshToken, profile, callback) {
       // them user vaof dbsds
-
       try {
         if (profile?.id) {
           let response = await db.User.findOrCreate({
@@ -92,6 +91,7 @@ passport.use(
               type: profile?.provider,
               name: profile?.displayName,
               image: profile?.photos[0]?.value,
+              role: 2,
             },
           });
         }

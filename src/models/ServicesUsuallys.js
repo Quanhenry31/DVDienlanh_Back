@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasMany(models.ServiceCategoriesUsuallys, {
         foreignKey: "categoryID",
+        onDelete: "CASCADE",
       });
     }
   }

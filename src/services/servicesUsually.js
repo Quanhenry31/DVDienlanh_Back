@@ -37,7 +37,13 @@ const destroy = async (id) => {
 // [GET] /
 const search = async () => {
   try {
-    const data = await ServicesUsuallys.findAll();
+    const data = await ServicesUsuallys.findAll({
+      include: [
+        {
+          model: ServiceCategoriesUsuallys,
+        },
+      ],
+    });
     return data;
   } catch (err) {
     console.log(err);

@@ -26,7 +26,7 @@ const destroy = async (id) => {
   try {
     const data = await Services.destroy({ where: { id } });
     return data;
-  } catch (err) {
+  } catch (err) {  
     console.log(err);
   }
 };
@@ -34,7 +34,13 @@ const destroy = async (id) => {
 // [GET] /
 const search = async () => {
   try {
-    const data = await Services.findAll();
+    const data = await Services.findAll({
+      include: [
+        {
+          model: ServiceCategories,
+        },
+      ],
+    });
     return data;
   } catch (err) {
     console.log(err);

@@ -50,6 +50,12 @@ class Controller {
       data,
     });
   };
+  findProductPopular = async (req, res) => {
+    const data = await Service.searchProductPopular();
+    return res.json({
+      data,
+    });
+  };
 }
 
 module.exports = new Controller();

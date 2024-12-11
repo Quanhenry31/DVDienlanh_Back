@@ -63,7 +63,7 @@ class Controller {
     }
   };
 
-  // [GET] /users/:id
+  // [GET] //:id
   findId = async (req, res) => {
     try {
       const id = req.params.id;
@@ -76,7 +76,19 @@ class Controller {
         .json({ error: "An error occurred while fetching the product." });
     }
   };
-
+  // [GET] //:id
+  findProductLQ = async (req, res) => {
+    try {
+      const id = req.params.id;
+      const data = await Service.searchLQ(id);
+      return res.json({ data });
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .json({ error: "An error occurred while fetching the product." });
+    }
+  };
   // [GET] /tim kiem tat ca/ALL
   findAll = async (req, res) => {
     const data = await Service.searchAll();

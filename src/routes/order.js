@@ -10,6 +10,7 @@ router.put("/:id", Controller.update);
 router.delete("/:id", Controller.delete);
 router.get("/", Controller.findAll);
 router.get("/findAllOrder", Controller.findAllOrder);
+router.get("/findProductPopular", Controller.findProductPopular);
 router.get("/:id", Controller.findId);
 
 // thanh toán khi nhận hàng

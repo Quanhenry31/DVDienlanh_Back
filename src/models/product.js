@@ -12,10 +12,16 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Brands, { foreignKey: "brandID" });
 
       // define association here if necessary
-      this.hasMany(models.ImgDetails, { foreignKey: "imgDetailID" });
-      this.hasMany(models.Size, { foreignKey: "sizeID" });
-      this.hasMany(models.Ncc, { foreignKey: "nccID" });
-      this.hasMany(models.Comments, { foreignKey: "productID" });
+      this.hasMany(models.ImgDetails, {
+        foreignKey: "imgDetailID",
+        onDelete: "CASCADE",
+      });
+      this.hasMany(models.Size, { foreignKey: "sizeID", onDelete: "CASCADE" });
+      this.hasMany(models.Ncc, { foreignKey: "nccID", onDelete: "CASCADE" });
+      this.hasMany(models.Comments, {
+        foreignKey: "productID",
+        onDelete: "CASCADE",
+      });
     }
   }
   Product.init(

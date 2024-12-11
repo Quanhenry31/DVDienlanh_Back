@@ -127,6 +127,64 @@ const searchId = async (id) => {
     console.log(err);
   }
 };
+// [GET] /:id/LQ
+const searchLQ = async (id) => {
+  try {
+    // Lấy thông tin sản phẩm theo ID
+    const product = await Product.findByPk(id, {
+      include: [
+        {
+          model: Brands,
+        },
+        {
+          model: ImgDetails,
+        },
+        {
+          model: Category,
+        },
+        {
+          model: Size,
+        },
+        {
+          model: Ncc,
+        },
+      ],
+    });
+
+    // Lấy sản phẩm liên quan theo categoryID
+    const relatedProducts = await Product.findAll({
+      where: {
+        categoryID: product?.categoryID, // Lọc theo categoryID của sản phẩm đang lấy
+        id: { [Op.ne]: id }, // Loại bỏ sản phẩm hiện tại
+      },
+      include: [
+        {
+          model: Brands,
+        },
+        {
+          model: ImgDetails,
+        },
+        {
+          model: Category,
+        },
+        {
+          model: Size,
+        },
+        {
+          model: Ncc,
+        },
+      ],
+    });
+
+    // Trả về sản phẩm theo ID và sản phẩm liên quan
+    return {
+      product,
+      relatedProducts,
+    };
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 const searchAll = async () => {
   try {
@@ -163,4 +221,5 @@ module.exports = {
   searchLoc,
   searchId,
   searchAll,
+  searchLQ,
 };
