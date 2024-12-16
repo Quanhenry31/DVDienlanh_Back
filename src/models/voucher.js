@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Voucher.init(
     {
       name: DataTypes.STRING,
-      img: DataTypes.STRING,
+      image: DataTypes.STRING,
       value: DataTypes.INTEGER,
       valueMin: DataTypes.INTEGER,
       valueMax: DataTypes.INTEGER,
